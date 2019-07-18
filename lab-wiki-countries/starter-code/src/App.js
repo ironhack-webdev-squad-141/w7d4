@@ -17,6 +17,8 @@ componentDidMount (){
     axios.get('https://countries.tech-savvy.tech/countries').then(response => {
 console.log('api response')
         this.setState({countries: response.data})
+    }).catch(err => {
+        console.log(err)
     })
 }
 
