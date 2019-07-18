@@ -37,7 +37,16 @@ class Movies extends React.Component {
     this.setState({ movies });
   };
 
+  componentDidMount() {
+    console.log("<Movies/> DID MOUNT");
+  }
+
+  componentDidUpdate() {
+    console.log("<Movies/> DID UPDATE");
+  }
+
   render() {
+    console.log("<Movies/> RENDER");
     return (
       <React.Fragment>
         <MovieForm addMovie={this.addMovie} />

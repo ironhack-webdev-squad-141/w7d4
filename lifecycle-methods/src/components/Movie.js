@@ -1,7 +1,20 @@
 import React, { Fragment } from "react";
 
 class Movie extends React.Component {
+  componentDidMount() {
+    console.log("<Movie/> DID MOUNT");
+  }
+
+  componentDidUpdate() {
+    console.log("<Movie/> DID UPDATE");
+  }
+
+  componentWillUnmount() {
+    console.log("<Movie/> WILL UNMOUNT");
+  }
+
   render() {
+    console.log("<Movie/> RENDER");
     const { title, director, hasOscars, IMDbRating } = this.props;
     return (
       <Fragment>
