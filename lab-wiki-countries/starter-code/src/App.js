@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CountriesList from "./components/CountriesList";
 import CountryDetails from "./components/CountryDetails";
-import axios from 'axios'
+import axios from "axios";
 import "./App.css";
 // import countries from "./countries.json";
 
@@ -12,26 +12,29 @@ class App extends Component {
     countries: []
   };
 
-componentDidMount (){
-    console.log("did mount")
-    axios.get('https://countries.tech-savvy.tech/countries').then(response => {
-console.log('api response')
-        this.setState({countries: response.data})
-    }).catch(err => {
-        console.log(err)
-    })
-}
+  componentDidMount() {
+    console.log("did mount");
+    axios
+      .get("https://countries.tech-savvy.tech/countries")
+      .then(response => {
+        console.log("api response");
+        this.setState({ countries: response.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
-componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     // console.log(prevProps, prevState)
-    console.log('update')
-}
+    console.log("update");
+  }
 
   render() {
-      console.log('render')
+    console.log("render");
 
-const countries = this.state.countries;
-console.log(countries)
+    const countries = this.state.countries;
+    console.log(countries);
     //   if (!countries.length) {
     //       return (<div>Loading</div>)
     //   }
@@ -55,10 +58,7 @@ console.log(countries)
                   exact
                   path="/:cca3"
                   render={props => (
-                    <CountryDetails
-                      {...props}
-                      countries={countries}
-                    />
+                    <CountryDetails {...props} countries={countries} />
                   )}
                 />
               </Switch>

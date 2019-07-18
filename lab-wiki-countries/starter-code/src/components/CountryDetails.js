@@ -6,7 +6,7 @@ class CountryDetails extends React.Component {
     const cca3 = this.props.match.params.cca3 || "AUS";
     const countries = this.props.countries;
 
-    const country = countries.find(country => country.cca3 === cca3) || {}
+    const country = countries.find(country => country.cca3 === cca3) || {};
 
     return (
       <div className="col-7">
