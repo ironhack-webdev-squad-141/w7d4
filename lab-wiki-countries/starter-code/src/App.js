@@ -3,15 +3,37 @@ import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import CountriesList from "./components/CountriesList";
 import CountryDetails from "./components/CountryDetails";
+import axios from 'axios'
 import "./App.css";
-import countries from "./countries.json";
+// import countries from "./countries.json";
 
 class App extends Component {
   state = {
-    countries: countries
+    countries: []
   };
 
+componentDidMount (){
+    console.log("did mount")
+    axios.get('https://countries.tech-savvy.tech/countries').then(response => {
+console.log('api response')
+        this.setState({countries: response.data})
+    })
+}
+
+componentDidUpdate(prevProps, prevState) {
+    // console.log(prevProps, prevState)
+    console.log('update')
+}
+
   render() {
+      console.log('render')
+
+const countries = this.state.countries;
+console.log(countries)
+    //   if (!countries.length) {
+    //       return (<div>Loading</div>)
+    //   }
+
     return (
       <div className="App">
         <div>
@@ -23,7 +45,7 @@ class App extends Component {
                 style={{ maxHeight: "90vh", overflow: "scroll" }}
               >
                 <div className="list-group">
-                  <CountriesList countries={this.state.countries} />
+                  <CountriesList countries={countries} />
                 </div>
               </div>
               <Switch>
@@ -33,7 +55,7 @@ class App extends Component {
                   render={props => (
                     <CountryDetails
                       {...props}
-                      countries={this.state.countries}
+                      countries={countries}
                     />
                   )}
                 />
